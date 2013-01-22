@@ -1,0 +1,25 @@
+{
+    "name": "chatter"
+  , "version": "0.0.1"
+  , "private": true
+  , "scripts": {
+	"start": "node app"
+    }
+  , "engines": {
+	"node": "0.8.16"
+      , "npm": "1.1.69"
+    }
+  , "dependencies": {
+	"express": "latest"
+      , "socket.io": "latest"
+      , "cookie": "latest"
+      , "connect-redis": "latest"
+      , "should": "latest"
+      , "superagent": "latest"
+      , "jade": "latest"
+      , "mongodb": "latest"
+      , "mongoose":"latest"
+      , "date-utils":"latest"
+      , "mocha":"latest"
+    }
+}

@@ -1,0 +1,23 @@
+extends ./layout
+block hero-unit
+  .hero-unit
+    h1 Let's chatting
+    p ログインしてチャットしましょう。
+    p
+      a(href="/signup").btn.btn-primary 新規登録
+block content
+  form(action="/login", method="POST")
+    fieldset
+      legend
+      - if (typeof(errmsg) !== 'undefined') {
+        p= errmsg
+      - }
+      p 
+        label ユーザーID
+        input(name="user[userID]", type="text")
+      p
+        label パスワード
+        input(name="user[password]", type="password")
+      p
+        button ログイン
+

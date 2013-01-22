@@ -1,0 +1,39 @@
+doctype 5
+html
+  head
+    title Chatter
+    link(rel='stylesheet', href='/stylesheets/bootstrap.css')
+    style(type="text/css")
+      body { padding-top: 40px; padding-left: 10px;  }
+    link(rel='stylesheet', href='/stylesheets/bootstrap-responsive.css')    
+    script(src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js")
+    script(src="/socket.io/socket.io.js")
+    script(src="/stylesheets/bootstrap-modal.js")
+  
+  body
+
+    .container
+      .navbar.navbar-fixed-top
+        .navbar-inner
+          .container
+            a.brand(href="/") Chatter
+            a.btn.btn-navbar
+              span.icon-bar
+              span.icon-bar
+              span.icon-bar	      
+            .nab-collapse
+              ul.nav
+                li.divider-vertical
+                block nav-link
+      .container
+        block hero-unit
+        
+        .row
+          .span12
+            block content
+        .row
+          .span12
+            &nbsp;
+      #footer
+        p &copy;Company 2012
+

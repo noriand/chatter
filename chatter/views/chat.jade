@@ -1,0 +1,44 @@
+extends layout
+block nav-link
+  li
+    a(href="/logout") ログアウト
+block content
+
+  #chat
+    p &nbsp;
+    a(data-toggle="modal", class="btn btn-primary", href="#message-entry") 新規メッセージ
+    p &nbsp;
+    .modal#message-entry(class="hide fade in", style="display:none;")
+      .modal-header
+         a.close(data-dismiss="modal")&times;
+         h3 新規メッセージ
+      .modal-body
+         p
+           textarea#textarea.span6
+      .modal-footer
+         a(href="#",class="btn", data-dismiss="modal")キャンセル
+         btn#btn-send(class="btn btn-success", data-dismiss="modal")送信
+  table#board.table-bordered.table-striped
+
+
+  script
+    var socket = io.connect();
+    socket.on("message", function(userID, message, date) {
+      $("#board").prepend("<tr><td class=\"span2\">" + date + "</td><td class=\"span2\">"+userID+"</td><td class=\"span6\">"+message+"</td></tr>");
+    });
+    var sendMessage = function() {
+      var message = $("#textarea").val();
+      $("#textarea").val("");
+      socket.emit("chat", message);
+    };
+    $(document).ready(function() {
+      $('textarea#textarea').bind('keypress', function(e) {
+        if (e.keyCode == 13) {
+          sendMessage();
+        }
+      });
+      $("#btn-send").click(function() {
+        sendMessage();
+      });
+    });
+
